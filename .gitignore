@@ -1,0 +1,61 @@
+# Ignore build directories
+build-*/
+*.pro.user*
+*.qmake.stash
+
+# Qt generated files
+*.moc
+*.obj
+*.o
+*.so
+*.a
+*.lib
+*.dll
+*.dylib
+*.exe
+
+# Qt Creator specific files
+.DS_Store
+.idea/
+*.creator.user
+*.creator.user.*
+*.creator.*
+*.pro.user
+*.qmake.stash
+
+# Ignore backup files
+*~ 
+*.swp
+
+# C++ compilation files
+*.d
+*.obj
+*.so
+*.a
+*.lib
+*.dll
+*.exe
+*.out
+*.app
+*.iws
+
+# Ignore qrc generated files
+qrc_*.cpp
+
+# Ignore moc generated files
+moc_*.cpp
+
+# Ignore ui generated files
+ui_*.h
+
+# Ignore qmake files
+Makefile
+Makefile.Debug
+Makefile.Release
+
+# Ignore debug and release directories
+debug/
+release/
+
+# Ignore ccache
+ccache.out
