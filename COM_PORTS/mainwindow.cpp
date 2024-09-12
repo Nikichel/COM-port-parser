@@ -12,13 +12,10 @@ MainWindow::MainWindow(QWidget *parent)
     initComboBox();
     initComPort();
 
-    //windLogger.setPath(QDir::currentPath()+"/Logs");
     ui->dirToSave->setText(windLogger.getPath());
 
     ui->chooseSpeed->setCurrentIndex(1);
     connect(&serialPort, &QSerialPort::readyRead, this, &MainWindow::readData);
-
-    //qDebug() << "Текущая рабочая директория: " << QDir::currentPath();
 }
 
 MainWindow::~MainWindow()
@@ -60,39 +57,47 @@ void MainWindow::readData()
 {
     QByteArray data = serialPort.readAll();
     QString message = QString::fromUtf8(data);
-    QString outputMessage = QString("Ошибка: данные не соответствуют ожидаемому формату.\n");
 
     QRegularExpression regex(R"(\$([\d.,]+),([\d.,]+)\r\n)");
     QRegularExpressionMatch match = regex.match(message);
 
     if (match.hasMatch()) {
-        QString windSpeed = match.captured(1); // Скорость ветра
-        QString windDirection = match.captured(2); // Направление ветра
+        QString windSpeed = match.captured(1);
+        QString windDirection = match.captured(2);
+        QString time = QDateTime::currentDateTime().toString(Qt::ISODate);
 
-        outputMessage = QString("Скорость ветра (среднее значение): %1 м/с\n"
-                                "Направление ветра (среднее значение): %2 °\n")
-                            .arg(windSpeed)
-                            .arg(windDirection);
-        QJsonObject json = this->windLogger.createJsonMessage("WMT700", windSpeed, windDirection);
+        QString outputMessage = QString("Время: %1\n"
+                                        "Скорость ветра (среднее значение): %2 м/с\n"
+                                        "Направление ветра (среднее значение): %3 °\n")
+                                    .arg(time)
+                                    .arg(windSpeed)
+                                    .arg(windDirection);
+
+        QJsonObject json = this->windLogger.createJsonMessage(time, "WMT700", windSpeed, windDirection);
         this->windLogger.appendJsonToFile(json);
+
+        ui->outputCOM->setText(ui->outputCOM->toPlainText() + outputMessage);
+
+
+        ui->outputStatus->setText(ui->outputStatus->toPlainText() + message);
+
+        QTextCursor cursorOutput = ui->outputCOM->textCursor();
+        cursorOutput.movePosition(QTextCursor::End);
+        ui->outputCOM->setTextCursor(cursorOutput);
+    } else {
+        QString outputMessage = "Ошибка: данные не соответствуют ожидаемому формату.\n";
+
+        ui->outputStatus->setText(ui->outputStatus->toPlainText() + outputMessage);
     }
 
-    ui->outputCOM->setText(ui->outputCOM->toPlainText() + outputMessage);
-    QTextCursor cursorOutput = ui->outputCOM->textCursor();
-    cursorOutput.movePosition(QTextCursor::End);
-    ui->outputCOM->setTextCursor(cursorOutput);
-
-    //ui->outputStatus->setText(ui->outputStatus->toPlainText() + "Передано: " + QString::number(data.size()) + " байт\n");
-    ui->outputStatus->setText(ui->outputStatus->toPlainText() + message);
     QTextCursor cursorStatus = ui->outputStatus->textCursor();
     cursorStatus.movePosition(QTextCursor::End);
     ui->outputStatus->setTextCursor(cursorStatus);
 }
 
+
 void MainWindow::on_dirToSave_returnPressed()
 {
-    //serialPort.write((ui->dirToSave->text() + "\n").toUtf8());
-    //ui->dirToSave->clear();
     QString newFilePath = ui->dirToSave->text();
     if(!windLogger.setPath(newFilePath)){
         ui->outputStatus->setText(ui->outputStatus->toPlainText() + newFilePath + " не существует\n");

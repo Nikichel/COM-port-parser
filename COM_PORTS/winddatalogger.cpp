@@ -1,7 +1,6 @@
 #include "WindDataLogger.h"
 #include <QJsonDocument>
 #include <QFile>
-#include <QDateTime>
 #include <QRegularExpression>
 #include <QTextStream>
 #include <QDebug>
@@ -11,13 +10,13 @@
 
 WindDataLogger::WindDataLogger(){
     this->m_filePath = QDir::currentPath()+"/Logs";
-    //this->fileName = "//wind_logs.json";
+
     qDebug() << this->m_filePath;
 }
 
 WindDataLogger::WindDataLogger(const QString& filePath) {
     this->m_filePath = filePath;
-    //this->fileName = QString("/wind_logs.json");
+
     qDebug() << this->m_filePath;
 }
 
@@ -28,10 +27,10 @@ bool WindDataLogger::setPath(const QString& filePath) {
     if (fileInfo.exists()) {
         this->m_filePath = filePath;
         qDebug() << "Файл или директория существует.";
-        return true; // Путь существует
+        return true;
     } else {
         qDebug() << "Файл или директория не найдены.";
-        return false; // Путь не существует
+        return false;
     }
 }
 
@@ -39,21 +38,21 @@ QString WindDataLogger::getPath(){
     return this->m_filePath;
 }
 
-QJsonObject WindDataLogger::createJsonMessage(const QString& sensorName, const QString& windSpeed, const QString& windDirection) {
+QJsonObject WindDataLogger::createJsonMessage(const QString& time, const QString& sensorName, const QString& windSpeed, const QString& windDirection) {
     QJsonObject jsonObject;
-    jsonObject["time"] = QDateTime::currentDateTime().toString(Qt::ISODate);  // Текущее время
+    jsonObject["time"] = time;
     jsonObject["sensor_name"] = sensorName;
     jsonObject["wind_speed"] = windSpeed;
     jsonObject["wind_direction"] = windDirection;
     return jsonObject;
 }
 
+/*
 void WindDataLogger::appendJsonToFile(const QJsonObject& jsonObject) {
     QFile file(m_filePath + "/logs_wind.json");
 
     QJsonArray jsonArray;
 
-    // Проверяем, существует ли файл
     if (file.exists()) {
         if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
             qWarning() << "Не удалось открыть файл для чтения.";
@@ -61,16 +60,53 @@ void WindDataLogger::appendJsonToFile(const QJsonObject& jsonObject) {
             return;
         }
 
-        // Читаем существующее содержимое файла
         QByteArray fileData = file.readAll();
         file.close();
 
-        // Парсим содержимое как JSON
         QJsonDocument existingDoc = QJsonDocument::fromJson(fileData);
 
-        // Проверяем, является ли это массивом
         if (existingDoc.isArray()) {
-            jsonArray = existingDoc.array();  // Загружаем существующий массив
+            jsonArray = existingDoc.array();
+        } else {
+            qWarning() << "Существующий файл не является массивом JSON.";
+        }
+    }
+
+    jsonArray.append(jsonObject);
+
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        qWarning() << "Не удалось открыть файл для записи.";
+        qWarning() << file.errorString();
+        return;
+    }
+
+    QJsonDocument jsonDoc(jsonArray);
+    QString jsonString = jsonDoc.toJson(QJsonDocument::Indented);
+
+    QTextStream stream(&file);
+    stream << jsonString;
+    file.close();
+}
+*/
+
+void WindDataLogger::appendJsonToFile(const QJsonObject& jsonObject) {
+    QFile file(m_filePath + "/logs_wind.json");
+
+    // Открываем файл для чтения
+    if (!file.open(QIODevice::ReadWrite | QIODevice::Text)) {
+        qWarning() << "Не удалось открыть файл.";
+        qWarning() << file.errorString();
+        return;
+    }
+
+    // Чтение существующих данных
+    QByteArray fileData = file.readAll();
+    QJsonArray jsonArray;
+
+    if (!fileData.isEmpty()) {
+        QJsonDocument existingDoc = QJsonDocument::fromJson(fileData);
+        if (existingDoc.isArray()) {
+            jsonArray = existingDoc.array();
         } else {
             qWarning() << "Существующий файл не является массивом JSON.";
         }
@@ -79,20 +115,12 @@ void WindDataLogger::appendJsonToFile(const QJsonObject& jsonObject) {
     // Добавляем новый объект в массив
     jsonArray.append(jsonObject);
 
-    // Открываем файл для записи (перезапись)
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        qWarning() << "Не удалось открыть файл для записи.";
-        qWarning() << file.errorString();
-        return;
-    }
+    // Переходим в начало файла, чтобы перезаписать его
+    file.resize(0);
 
-    // Преобразуем массив JSON в строку
+    // Запись данных обратно в файл
     QJsonDocument jsonDoc(jsonArray);
-    QString jsonString = jsonDoc.toJson(QJsonDocument::Indented);
-
-    // Записываем массив обратно в файл
-    QTextStream stream(&file);
-    stream << jsonString;
+    file.write(jsonDoc.toJson(QJsonDocument::Indented));
     file.close();
 }
 

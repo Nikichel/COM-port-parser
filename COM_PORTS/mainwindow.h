@@ -6,6 +6,7 @@
 #include <QSerialPortInfo>
 #include <QMap>
 #include <QMessageBox>
+#include <QDateTime>
 
 #include "WindDataLogger.h"
 

@@ -1,0 +1,152 @@
+[
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T17:48:51",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T17:48:54",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T17:48:57",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T17:49:00",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T17:49:03",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T17:49:06",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:00:48",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:00:50",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:00:53",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:02:34",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:02:37",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:02:41",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:02:44",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:02:47",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:02:50",
+        "wind_direction": "020.00",
+        "wind_speed": "34.00"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:03:10",
+        "wind_direction": "456.70",
+        "wind_speed": "12.30"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:03:13",
+        "wind_direction": "456.70",
+        "wind_speed": "12.30"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:03:16",
+        "wind_direction": "456.70",
+        "wind_speed": "12.30"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:03:19",
+        "wind_direction": "456.70",
+        "wind_speed": "12.30"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:03:22",
+        "wind_direction": "456.70",
+        "wind_speed": "12.30"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:03:25",
+        "wind_direction": "456.70",
+        "wind_speed": "12.30"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:03:28",
+        "wind_direction": "456.70",
+        "wind_speed": "12.30"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:03:31",
+        "wind_direction": "456.70",
+        "wind_speed": "12.30"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:03:34",
+        "wind_direction": "456.70",
+        "wind_speed": "12.30"
+    },
+    {
+        "sensor_name": "WMT700",
+        "time": "2024-09-12T18:03:37",
+        "wind_direction": "456.70",
+        "wind_speed": "12.30"
+    }
+]
