@@ -11,10 +11,12 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    winddatalogger.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    winddatalogger.h
 
 FORMS += \
     mainwindow.ui

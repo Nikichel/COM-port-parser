@@ -7,6 +7,8 @@
 #include <QMap>
 #include <QMessageBox>
 
+#include "WindDataLogger.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -22,15 +24,17 @@ public:
     void initComboBox();
 
 private slots:
-    void on_inputCOM_returnPressed();
+    void on_dirToSave_returnPressed();
     void on_chooseCOM_currentIndexChanged(int index);
     void readData();
 
-    void on_chooseByte_currentIndexChanged(int index);
+    void on_chooseSpeed_currentIndexChanged(int index);
 
 private:
     QSerialPort serialPort;
     QMap<QString, int> portMap;
     Ui::MainWindow *ui;
+
+    WindDataLogger windLogger;
 };
 #endif // MAINWINDOW_H

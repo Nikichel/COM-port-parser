@@ -17,8 +17,8 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>259</y>
+      <x>350</x>
+      <y>260</y>
       <width>111</width>
       <height>51</height>
      </rect>
@@ -32,41 +32,41 @@
      <string>Выбор номера&lt;br&gt;COM-порта</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="chooseByte">
+   <widget class="QComboBox" name="chooseSpeed">
     <property name="geometry">
      <rect>
-      <x>470</x>
-      <y>319</y>
-      <width>51</width>
+      <x>160</x>
+      <y>270</y>
+      <width>71</width>
       <height>31</height>
      </rect>
     </property>
     <item>
      <property name="text">
-      <string>5</string>
+      <string>1200</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>6</string>
+      <string>2400</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>7</string>
+      <string>4800</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>8</string>
+      <string>9600</string>
      </property>
     </item>
    </widget>
    <widget class="QComboBox" name="chooseCOM">
     <property name="geometry">
      <rect>
-      <x>450</x>
-      <y>269</y>
+      <x>500</x>
+      <y>270</y>
       <width>71</width>
       <height>31</height>
      </rect>
@@ -120,9 +120,9 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>309</y>
-      <width>131</width>
+      <x>40</x>
+      <y>260</y>
+      <width>121</width>
       <height>41</height>
      </rect>
     </property>
@@ -132,7 +132,7 @@
      </font>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Выбор количества&lt;br/&gt;битов в байте&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Выбор скорости&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -153,22 +153,12 @@
      <string>Окно вывода</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="inputCOM">
-    <property name="geometry">
-     <rect>
-      <x>38</x>
-      <y>293</y>
-      <width>291</width>
-      <height>20</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QTextBrowser" name="outputCOM">
     <property name="geometry">
      <rect>
       <x>38</x>
       <y>57</y>
-      <width>291</width>
+      <width>301</width>
       <height>201</height>
      </rect>
     </property>
@@ -176,9 +166,9 @@
    <widget class="QTextBrowser" name="outputStatus">
     <property name="geometry">
      <rect>
-      <x>336</x>
-      <y>57</y>
-      <width>181</width>
+      <x>350</x>
+      <y>60</y>
+      <width>221</width>
       <height>201</height>
      </rect>
     </property>
@@ -186,8 +176,8 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>28</y>
+      <x>350</x>
+      <y>30</y>
       <width>261</width>
       <height>31</height>
      </rect>
@@ -201,13 +191,23 @@
      <string>Окно состояния</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLineEdit" name="dirToSave">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>270</y>
-      <width>121</width>
-      <height>21</height>
+      <y>330</y>
+      <width>531</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>310</y>
+      <width>241</width>
+      <height>20</height>
      </rect>
     </property>
     <property name="font">
@@ -216,7 +216,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Окно ввода</string>
+     <string>Путь к файлу сохранения логов</string>
     </property>
    </widget>
   </widget>
