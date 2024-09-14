@@ -9,7 +9,7 @@
 #include <QDir>
 
 WindDataLogger::WindDataLogger(){
-    this->m_filePath = QDir::currentPath()+"/Logs";
+    this->m_filePath = QDir::currentPath();
 
     qDebug() << this->m_filePath;
 }
